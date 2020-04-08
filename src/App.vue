@@ -1,25 +1,33 @@
 <template>
-  <div id="app">
-    <ul>
-      <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="/mqtt">FaSAC Control</router-link></li>
-    </ul>
-    <router-view></router-view>
+  <div>
+    <v-app>
+      <!-- <v-app-bar color="primary" dark>
+        <h1>FaSAC</h1>
+        <v-spacer></v-spacer>
+
+        <v-btn @click="$router.push('/login')" target="_blank" text>
+          <span class="mr-2">Login</span>
+        </v-btn>
+
+        <v-btn @click="$router.push('/mqtt')" target="_blank" text>
+          <span class="mr-2">Control</span>
+          <v-icon>mdi-open-in-new</v-icon>
+        </v-btn>
+      </v-app-bar> -->
+
+      <v-content>
+        <router-view></router-view>
+      </v-content>
+    </v-app>
   </div>
 </template>
 
 <script>
 export default {
-  name: "app"
+  name: "App",
+
+  data: () => ({
+    //
+  })
 };
 </script>
-<style scoped>
-ul {
-  margin: 0;
-  padding: 0;
-}
-li {
-  display: inline;
-  margin-right: 10px;
-}
-</style>
