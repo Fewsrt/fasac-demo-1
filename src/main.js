@@ -5,7 +5,7 @@ import store from "./store";
 import VueMqtt from "vue-mqtt";
 import vuetify from "./plugins/vuetify";
 
-Vue.use(VueMqtt, "ws://fasactrue.ddns.net:9001"),
+Vue.use(VueMqtt, "ws://fasacserver.ddns.net:9001"),
   { username: "", password: "" };
 
 Vue.config.productionTip = false;

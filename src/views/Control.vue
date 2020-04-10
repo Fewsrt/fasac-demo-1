@@ -1,8 +1,10 @@
 <template>
   <div app="control">
     <h1>FaSAC Control</h1>
-    <v-btn class="ma-2" color="error" outlined @click="lighton">On</v-btn>
-    <v-btn class="ma-2" outlined color="indigo" @click="lightoff">Off</v-btn>
+    <v-btn class="ma-2" color="error" outlined @click="light_1on">On</v-btn>
+    <v-btn class="ma-2" outlined color="indigo" @click="light_1off">Off</v-btn>
+    <v-btn class="ma-2" color="error" outlined @click="light_2on">On</v-btn>
+    <v-btn class="ma-2" outlined color="indigo" @click="light_2off">Off</v-btn>
     <h3>Check Status : {{ relay }}</h3>
   </div>
 </template>
@@ -17,21 +19,27 @@ export default {
     };
   },
   methods: {
-    lighton() {
-      this.$mqtt.publish("raspi/1", "0");
+    light_1on() {
+      this.$mqtt.publish("raspi/1", "relay-1-0");
       console.log("on");
-      this.$mqtt.subscribe("relay/on", this.onMsg);
     },
-    lightoff() {
-      this.$mqtt.publish("raspi/1", "1");
+    light_1off() {
+      this.$mqtt.publish("raspi/1", "relay-1-1");
       console.log("off");
-      this.$mqtt.subscribe("relay/off", this.onMsg);
     },
-    onMsg(topic, data) {
-      console.log("topic", topic);
-      console.log("data", data);
-      this.message.push(topic);
+    light_2on() {
+      this.$mqtt.publish("raspi/1", "relay-2-0");
+      console.log("on");
+    },
+    light_2off() {
+      this.$mqtt.publish("raspi/1", "relay-2-1");
+      console.log("off");
     }
+    // onMsg(topic, data) {
+    //   console.log("topic", topic);
+    //   console.log("data", data);
+    //   this.message.push(topic);
+    // }
   },
   mqtt: {
     "raspi/1"(data, topic) {
