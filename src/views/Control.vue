@@ -13,8 +13,8 @@
     <h3>Pump 4</h3>
     <v-btn class="ma-2" color="error" outlined @click="light_4on">On</v-btn>
     <v-btn class="ma-2" outlined color="indigo" @click="light_4off">Off</v-btn>
-    <!-- <h3>Check Status : {{ relay }}</h3>
-    <v-card class="mx-auto" max-width="344">
+    <h3>Check Status : {{ string }}</h3>
+    <!-- <v-card class="mx-auto" max-width="344">
       <v-list-item three-line>
         <v-list-item-content>
           <div class="overline mb-4">pH</div>
@@ -30,14 +30,19 @@ export default {
   name: "control",
   data() {
     return {
-      relay: "",
-      msg: "",
-      message: []
+      string: "0"
     };
+  },
+  mqtt: {
+    "test/ip": function(val) {
+      var string = new TextDecoder("utf-8").decode(val);
+      this.string;
+      console.log(string);
+    }
   },
   created() {
     // subscibe
-    this.$mqtt.subscribe("test/ip", this.onMsg);
+    this.$mqtt.subscribe("test/ip", { qos: 0 });
   },
   methods: {
     light_1on() {
@@ -64,8 +69,9 @@ export default {
     light_4off() {
       this.$mqtt.publish("raspi/1", "relay-4-0");
     }
-    // onMsg(topic) {
-    //   console.log(topic);
+    // onMsg(topic, data) {
+    //   console.log("topic", topic);
+    //   console.log("data", data);
     //   this.message.push(topic);
     // }
   }
