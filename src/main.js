@@ -5,7 +5,7 @@ import store from "./store";
 import VueMqtt from "vue-mqtt";
 import vuetify from "./plugins/vuetify";
 
-Vue.use(VueMqtt, "ws://183.89.153.253:9001"), { username: "", password: "" };
+Vue.use(VueMqtt, "ws://192.168.88.220:9001"), { username: "", password: "" };
 
 Vue.config.productionTip = false;
 

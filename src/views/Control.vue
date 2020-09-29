@@ -13,15 +13,10 @@
     <h3>Pump 4</h3>
     <v-btn class="ma-2" color="error" outlined @click="light_4on">On</v-btn>
     <v-btn class="ma-2" outlined color="indigo" @click="light_4off">Off</v-btn>
-    <h3>Check Status : {{ string }}</h3>
-    <!-- <v-card class="mx-auto" max-width="344">
-      <v-list-item three-line>
-        <v-list-item-content>
-          <div class="overline mb-4">pH</div>
-          <v-list-item-title class="headline mb-1">{{ msg }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </v-card> -->
+    <h3>Check Status : {{ relay1 }}</h3>
+    <h3>Check Status : {{ relay2 }}</h3>
+    <h3>Check Status : {{ relay3 }}</h3>
+    <h3>Check Status : {{ relay4 }}</h3>
   </div>
 </template>
 
@@ -30,19 +25,64 @@ export default {
   name: "control",
   data() {
     return {
-      string: "0"
+      relay1: "",
+      relay2: "",
+      relay3: "",
+      relay4: ""
     };
   },
   mqtt: {
-    "test/ip": function(val) {
-      var string = new TextDecoder("utf-8").decode(val);
-      this.string;
-      console.log(string);
+    "relay-1-on": function(val) {
+      var relay1 = new TextDecoder("utf-8").decode(val);
+      this.relay1 = val;
+      console.log(relay1);
+    },
+    "relay-1-off": function(val) {
+      var relay1 = new TextDecoder("utf-8").decode(val);
+      this.relay1 = val;
+      console.log(relay1);
+    },
+    "relay-2-on": function(val) {
+      var relay2 = new TextDecoder("utf-8").decode(val);
+      this.relay2 = val;
+      console.log(relay2);
+    },
+    "relay-2-off": function(val) {
+      var relay2 = new TextDecoder("utf-8").decode(val);
+      this.relay2 = val;
+      console.log(relay2);
+    },
+    "relay-3-on": function(val) {
+      var relay3 = new TextDecoder("utf-8").decode(val);
+      this.relay3 = val;
+      console.log(relay3);
+    },
+    "relay-3-off": function(val) {
+      var relay3 = new TextDecoder("utf-8").decode(val);
+      this.relay3 = val;
+      console.log(relay3);
+    },
+    "relay-4-on": function(val) {
+      var relay4 = new TextDecoder("utf-8").decode(val);
+      this.relay4 = val;
+      console.log(relay4);
+    },
+    "relay-4-off": function(val) {
+      var relay4 = new TextDecoder("utf-8").decode(val);
+      this.relay4 = val;
+      console.log(relay4);
     }
   },
   created() {
     // subscibe
-    this.$mqtt.subscribe("test/ip", { qos: 0 });
+    this.$mqtt.subscribe("relay-1-on", { qos: 0 });
+    this.$mqtt.subscribe("relay-1-off", { qos: 0 });
+    this.$mqtt.subscribe("relay-2-on", { qos: 0 });
+    this.$mqtt.subscribe("relay-2-off", { qos: 0 });
+    this.$mqtt.subscribe("relay-3-on", { qos: 0 });
+    this.$mqtt.subscribe("relay-3-off", { qos: 0 });
+    this.$mqtt.subscribe("relay-4-on", { qos: 0 });
+    this.$mqtt.subscribe("relay-4-off", { qos: 0 });
   },
   methods: {
     light_1on() {
