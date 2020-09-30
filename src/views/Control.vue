@@ -4,13 +4,13 @@
     <h3>Pump 1</h3>
     <v-btn class="ma-2" color="error" outlined @click="light_1on">On</v-btn>
     <v-btn class="ma-2" outlined color="indigo" @click="light_1off">Off</v-btn>
-    <h3>Pump 2</h3>
+    <h3>Pump A</h3>
     <v-btn class="ma-2" color="error" outlined @click="light_2on">On</v-btn>
     <v-btn class="ma-2" outlined color="indigo" @click="light_2off">Off</v-btn>
-    <h3>Pump 3</h3>
+    <h3>Pump B</h3>
     <v-btn class="ma-2" color="error" outlined @click="light_3on">On</v-btn>
     <v-btn class="ma-2" outlined color="indigo" @click="light_3off">Off</v-btn>
-    <h3>Pump 4</h3>
+    <h3>Pump pH</h3>
     <v-btn class="ma-2" color="error" outlined @click="light_4on">On</v-btn>
     <v-btn class="ma-2" outlined color="indigo" @click="light_4off">Off</v-btn>
     <h3>Check Status : {{ relay1 }}</h3>
